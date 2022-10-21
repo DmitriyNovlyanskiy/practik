@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 21 2022 г., 11:33
+-- Время создания: Окт 21 2022 г., 11:39
 -- Версия сервера: 5.6.51
 -- Версия PHP: 8.0.22
 
@@ -109,7 +109,7 @@ INSERT INTO `img` (`id_img`, `url`, `alt`) VALUES
 --
 
 CREATE TABLE `main_categorie` (
-  `main_categorie` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
   `id_categories` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -117,7 +117,7 @@ CREATE TABLE `main_categorie` (
 -- Дамп данных таблицы `main_categorie`
 --
 
-INSERT INTO `main_categorie` (`main_categorie`, `id_categories`) VALUES
+INSERT INTO `main_categorie` (`id_product`, `id_categories`) VALUES
 (1, 3),
 (2, 3),
 (3, 3),
@@ -250,7 +250,7 @@ INSERT INTO `more_img` (`id_product`, `id_img`) VALUES
 --
 
 CREATE TABLE `preview` (
-  `main_img` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
   `id_images` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -258,7 +258,7 @@ CREATE TABLE `preview` (
 -- Дамп данных таблицы `preview`
 --
 
-INSERT INTO `preview` (`main_img`, `id_images`) VALUES
+INSERT INTO `preview` (`id_product`, `id_images`) VALUES
 (1, 1),
 (2, 5),
 (3, 9),
@@ -329,7 +329,7 @@ ALTER TABLE `img`
 --
 ALTER TABLE `main_categorie`
   ADD KEY `id_categories` (`id_categories`),
-  ADD KEY `main_categorie_ibfk_2` (`main_categorie`);
+  ADD KEY `main_categorie_ibfk_2` (`id_product`);
 
 --
 -- Индексы таблицы `more_categories`
@@ -350,7 +350,7 @@ ALTER TABLE `more_img`
 --
 ALTER TABLE `preview`
   ADD KEY `id_images` (`id_images`),
-  ADD KEY `main_img` (`main_img`);
+  ADD KEY `main_img` (`id_product`);
 
 --
 -- Индексы таблицы `product`
@@ -389,7 +389,7 @@ ALTER TABLE `product`
 --
 ALTER TABLE `main_categorie`
   ADD CONSTRAINT `main_categorie_ibfk_1` FOREIGN KEY (`id_categories`) REFERENCES `categories` (`id_categories`),
-  ADD CONSTRAINT `main_categorie_ibfk_2` FOREIGN KEY (`main_categorie`) REFERENCES `product` (`id`);
+  ADD CONSTRAINT `main_categorie_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `more_categories`
@@ -410,7 +410,7 @@ ALTER TABLE `more_img`
 --
 ALTER TABLE `preview`
   ADD CONSTRAINT `preview_ibfk_1` FOREIGN KEY (`id_images`) REFERENCES `img` (`id_img`),
-  ADD CONSTRAINT `preview_ibfk_2` FOREIGN KEY (`main_img`) REFERENCES `product` (`id`);
+  ADD CONSTRAINT `preview_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
