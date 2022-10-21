@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 21 2022 г., 07:56
+-- Время создания: Окт 21 2022 г., 11:11
 -- Версия сервера: 5.6.51
 -- Версия PHP: 8.0.22
 
@@ -24,44 +24,130 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `catalog`
---
-
-CREATE TABLE `catalog` (
-  `id` int(11) NOT NULL,
-  `caption` varchar(192) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `quantity` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `catalog`
---
-
-INSERT INTO `catalog` (`id`, `caption`, `quantity`) VALUES
-(1, 'мужские рубашки', 13),
-(2, 'женские рубашки', 19),
-(3, 'рубашки с длинным рукавом', 32),
-(4, 'рубашки с коротким рукавом', 0),
-(5, 'мужские брюки', 11),
-(6, 'женские брюки', 11),
-(7, 'джинсовые рубашки', 6);
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `categories`
 --
 
 CREATE TABLE `categories` (
-  `id_product` int(11) NOT NULL,
-  `id_catalog` int(11) NOT NULL
+  `id_categories` int(11) NOT NULL,
+  `caption` varchar(192) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(192) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `categories`
 --
 
-INSERT INTO `categories` (`id_product`, `id_catalog`) VALUES
+INSERT INTO `categories` (`id_categories`, `caption`, `description`) VALUES
+(1, 'мужские рубашки', 'мужские рубашки'),
+(2, 'женские рубашки', 'женские рубашки'),
+(3, 'рубашки с длинным рукавом', 'рубашки с длинным рукавом'),
+(4, 'рубашки с длинным рукавом', 'рубашки с длинным рукавом'),
+(5, 'мужские брюки', 'мужские брюки'),
+(6, 'женские брюки', 'женские брюки'),
+(7, 'джинсовые рубашки', 'джинсовые рубашки');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `img`
+--
+
+CREATE TABLE `img` (
+  `id_img` int(11) NOT NULL,
+  `url` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alt` varchar(192) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `img`
+--
+
+INSERT INTO `img` (`id_img`, `url`, `alt`) VALUES
+(1, '../img_1.jpg', 'картинка 1'),
+(2, '../img_2.jpg', 'картинка 2'),
+(3, '../img_3.jpg', 'картинка 3'),
+(4, '../img_4.jpg', 'картинка 4'),
+(5, '../img_5.jpg', 'картинка 5'),
+(6, '../img_6.jpg', 'картинка 1'),
+(7, '../img_7.jpg', 'картинка 1'),
+(8, '../img_8.jpg', 'картинка 1'),
+(9, '../img_9.jpg', 'картинка 1'),
+(10, '../img_10.jpg', 'картинка 1'),
+(11, '../img_11.jpg', 'картинка 1'),
+(12, '../img_12.jpg', 'картинка 1'),
+(13, '../img_13.jpg', 'картинка 1'),
+(14, '../img_14.jpg', 'картинка 1'),
+(15, '../img_15.jpg', 'картинка 1'),
+(16, '../img_16.jpg', 'картинка 1'),
+(17, '../img_17.jpg', 'картинка 1'),
+(18, '../img_18.jpg', 'картинка 1'),
+(19, '../img_19.jpg', 'картинка 1'),
+(20, '../img_20.jpg', 'картинка 1'),
+(21, '../img_21.jpg', 'картинка 1'),
+(22, '../img_22.jpg', 'картинка 1'),
+(23, '../img_23.jpg', 'картинка 1'),
+(24, '../img_24.jpg', 'картинка 1'),
+(25, '../img_25.jpg', 'картинка 1'),
+(26, '../img_26.jpg', 'картинка 1'),
+(27, '../img_27.jpg', 'картинка 1'),
+(28, '../img_28.jpg', 'картинка 1'),
+(29, '../img_29.jpg', 'картинка 1'),
+(30, '../img_30.jpg', 'картинка 1'),
+(31, '../img_31.jpg', 'картинка 1'),
+(32, '../img_32.jpg', 'картинка 1'),
+(33, '../img_33.jpg', 'картинка 1'),
+(34, '../img_34.jpg', 'картинка 1'),
+(35, '../img_35.jpg', 'картинка 1'),
+(36, '../img_36.jpg', 'картинка 36'),
+(37, '../img_37.jpg', 'картинка 37'),
+(38, '../img_38.jpg', 'картинка 38');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `main_categorie`
+--
+
+CREATE TABLE `main_categorie` (
+  `main_categorie` int(11) NOT NULL,
+  `id_categories` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `main_categorie`
+--
+
+INSERT INTO `main_categorie` (`main_categorie`, `id_categories`) VALUES
+(3, 3),
+(3, 3),
+(3, 3),
+(3, 3),
+(3, 3),
+(3, 3),
+(3, 3),
+(5, 5),
+(5, 5),
+(6, 6),
+(5, 5),
+(6, 6),
+(5, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `more_categories`
+--
+
+CREATE TABLE `more_categories` (
+  `id_product` int(11) NOT NULL,
+  `id_categories` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `more_categories`
+--
+
+INSERT INTO `more_categories` (`id_product`, `id_categories`) VALUES
 (1, 1),
 (1, 3),
 (2, 1),
@@ -89,74 +175,19 @@ INSERT INTO `categories` (`id_product`, `id_catalog`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `images`
+-- Структура таблицы `more_img`
 --
 
-CREATE TABLE `images` (
-  `id` int(11) NOT NULL,
-  `url` text COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `images`
---
-
-INSERT INTO `images` (`id`, `url`) VALUES
-(1, '../img_1.jpg'),
-(2, '../img_2.jpg'),
-(3, '../img_3.jpg'),
-(4, '../img_4.jpg'),
-(5, '../img_5.jpg'),
-(6, '../img_6.jpg'),
-(7, '../img_7.jpg'),
-(8, '../img_8.jpg'),
-(9, '../img_9.jpg'),
-(10, '../img_10.jpg'),
-(11, '../img_11.jpg'),
-(12, '../img_12.jpg'),
-(13, '../img_13.jpg'),
-(14, '../img_14.jpg'),
-(15, '../img_15.jpg'),
-(16, '../img_16.jpg'),
-(17, '../img_17.jpg'),
-(18, '../img_18.jpg'),
-(19, '../img_19.jpg'),
-(20, '../img_20.jpg'),
-(21, '../img_21.jpg'),
-(22, '../img_22.jpg'),
-(23, '../img_23.jpg'),
-(24, '../img_24.jpg'),
-(25, '../img_25.jpg'),
-(26, '../img_26.jpg'),
-(27, '../img_27.jpg'),
-(28, '../img_28.jpg'),
-(29, '../img_29.jpg'),
-(30, '../img_30.jpg'),
-(31, '../img_31.jpg'),
-(32, '../img_32.jpg'),
-(33, '../img_33.jpg'),
-(34, '../img_34.jpg'),
-(35, '../img_35.jpg'),
-(36, '../img_36.jpg'),
-(37, '../img_37.jpg'),
-(38, '../img_38.jpg');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `pictures_product`
---
-
-CREATE TABLE `pictures_product` (
+CREATE TABLE `more_img` (
   `id_product` int(11) NOT NULL,
-  `id_images` int(11) NOT NULL
+  `id_img` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `pictures_product`
+-- Дамп данных таблицы `more_img`
 --
 
-INSERT INTO `pictures_product` (`id_product`, `id_images`) VALUES
+INSERT INTO `more_img` (`id_product`, `id_img`) VALUES
 (1, 1),
 (1, 2),
 (1, 3),
@@ -215,6 +246,33 @@ INSERT INTO `pictures_product` (`id_product`, `id_images`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `preview`
+--
+
+CREATE TABLE `preview` (
+  `main_img` int(11) NOT NULL,
+  `id_images` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `preview`
+--
+
+INSERT INTO `preview` (`main_img`, `id_images`) VALUES
+(1, 1),
+(5, 5),
+(9, 9),
+(13, 13),
+(17, 17),
+(21, 21),
+(25, 25),
+(29, 29),
+(33, 33),
+(35, 35);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `product`
 --
 
@@ -222,81 +280,100 @@ CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `caption` varchar(192) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(10,2) NOT NULL,
+  `price_no_discount` decimal(10,2) NOT NULL,
+  `promo_code_price` decimal(10,2) NOT NULL,
   `description` varchar(192) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `preview` int(11) NOT NULL
+  `activity` tinyint(1) NOT NULL,
+  `main_img` int(11) NOT NULL,
+  `main_categorie` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `product`
 --
 
-INSERT INTO `product` (`id`, `caption`, `price`, `description`, `preview`) VALUES
-(1, 'рубашка medecine', '1376.00', 'Рубашка Medicine выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 1),
-(2, 'рубашка defacto', '1799.00', 'Рубашка DeFacto выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 5),
-(3, 'рубашка lyle & scott', '3777.00', 'Рубашка Lyle & Scott выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 9),
-(4, 'рубашка o\'stin', '1299.00', 'Рубашка O\'stin выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 13),
-(5, 'рубашка defacto', '2899.00', 'Рубашка DeFacto. Детали: прямой крой; планка и манжеты на пуговицах; карман на груди.', 5),
-(6, 'рубашка colin\'s', '2390.00', 'Рубашка Colin\'s выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 17),
-(7, 'рубашка zarina', '2599.00', 'Рубашка Zarina выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 21),
-(8, 'брюки fila', '2599.00', 'Рубашка Fila выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 25),
-(9, 'брюки sakha', '1799.00', 'Рубашка Sakha выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 29),
-(10, 'брюки sakha', '1799.00', 'Рубашка Sakha выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 29),
-(11, 'брюки zarina', '3799.00', 'Рубашка Zarina выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 21),
-(12, 'брюки oodji', '1699.00', 'Рубашка oodji выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 33),
-(13, 'брюки sela', '2599.00', 'Рубашка Sela выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 35);
+INSERT INTO `product` (`id`, `caption`, `price`, `price_no_discount`, `promo_code_price`, `description`, `activity`, `main_img`, `main_categorie`) VALUES
+(1, 'рубашка medecine', '1376.00', '0.00', '0.00', 'Рубашка Medicine выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 1, 1, 3),
+(2, 'рубашка defacto', '1799.00', '0.00', '0.00', 'Рубашка DeFacto выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 1, 5, 3),
+(3, 'рубашка lyle & scott', '3777.00', '0.00', '0.00', 'Рубашка Lyle & Scott выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 0, 9, 3),
+(4, 'рубашка o\'stin', '1299.00', '0.00', '0.00', 'Рубашка O\'stin выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 1, 13, 3),
+(5, 'рубашка defacto', '2899.00', '0.00', '0.00', 'Рубашка DeFacto. Детали: прямой крой; планка и манжеты на пуговицах; карман на груди.', 1, 5, 3),
+(6, 'рубашка colin\'s', '2390.00', '0.00', '0.00', 'Рубашка Colin\'s выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 1, 17, 3),
+(7, 'рубашка zarina', '2599.00', '0.00', '0.00', 'Рубашка Zarina выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 1, 21, 3),
+(8, 'брюки fila', '2599.00', '0.00', '0.00', 'Рубашка Fila выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 0, 25, 5),
+(9, 'брюки sakha', '1799.00', '0.00', '0.00', 'Рубашка Sakha выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 0, 29, 5),
+(10, 'брюки sakha', '1799.00', '0.00', '0.00', 'Рубашка Sakha выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 0, 29, 6),
+(11, 'брюки zarina', '3799.00', '0.00', '0.00', 'Рубашка Zarina выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 1, 21, 5),
+(12, 'брюки oodji', '1699.00', '0.00', '0.00', 'Рубашка oodji выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 1, 33, 6),
+(13, 'брюки sela', '2599.00', '0.00', '0.00', 'Рубашка Sela выполнена из вискозной ткани с клетчатым узором. Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.', 1, 35, 5);
 
 --
 -- Индексы сохранённых таблиц
 --
 
 --
--- Индексы таблицы `catalog`
---
-ALTER TABLE `catalog`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Индексы таблицы `categories`
 --
 ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id_categories`);
+
+--
+-- Индексы таблицы `img`
+--
+ALTER TABLE `img`
+  ADD PRIMARY KEY (`id_img`);
+
+--
+-- Индексы таблицы `main_categorie`
+--
+ALTER TABLE `main_categorie`
+  ADD KEY `id_categories` (`id_categories`),
+  ADD KEY `main_categorie` (`main_categorie`);
+
+--
+-- Индексы таблицы `more_categories`
+--
+ALTER TABLE `more_categories`
   ADD KEY `id_product` (`id_product`),
-  ADD KEY `id_catalog` (`id_catalog`);
+  ADD KEY `id_catalog` (`id_categories`);
 
 --
--- Индексы таблицы `images`
+-- Индексы таблицы `more_img`
 --
-ALTER TABLE `images`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `pictures_product`
---
-ALTER TABLE `pictures_product`
-  ADD KEY `pictures_product_ibfk_1` (`id_images`),
+ALTER TABLE `more_img`
+  ADD KEY `pictures_product_ibfk_1` (`id_img`),
   ADD KEY `pictures_product_ibfk_2` (`id_product`);
+
+--
+-- Индексы таблицы `preview`
+--
+ALTER TABLE `preview`
+  ADD KEY `id_images` (`id_images`),
+  ADD KEY `main_img` (`main_img`);
 
 --
 -- Индексы таблицы `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `product_ibfk_1` (`preview`);
+  ADD KEY `product_ibfk_1` (`main_img`),
+  ADD KEY `main_categorie` (`main_categorie`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT для таблицы `catalog`
+-- AUTO_INCREMENT для таблицы `categories`
 --
-ALTER TABLE `catalog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `categories`
+  MODIFY `id_categories` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT для таблицы `images`
+-- AUTO_INCREMENT для таблицы `img`
 --
-ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+ALTER TABLE `img`
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT для таблицы `product`
@@ -309,24 +386,32 @@ ALTER TABLE `product`
 --
 
 --
--- Ограничения внешнего ключа таблицы `categories`
+-- Ограничения внешнего ключа таблицы `main_categorie`
 --
-ALTER TABLE `categories`
-  ADD CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`),
-  ADD CONSTRAINT `categories_ibfk_2` FOREIGN KEY (`id_catalog`) REFERENCES `catalog` (`id`);
+ALTER TABLE `main_categorie`
+  ADD CONSTRAINT `main_categorie_ibfk_1` FOREIGN KEY (`id_categories`) REFERENCES `categories` (`id_categories`),
+  ADD CONSTRAINT `main_categorie_ibfk_2` FOREIGN KEY (`main_categorie`) REFERENCES `product` (`main_categorie`);
 
 --
--- Ограничения внешнего ключа таблицы `pictures_product`
+-- Ограничения внешнего ключа таблицы `more_categories`
 --
-ALTER TABLE `pictures_product`
-  ADD CONSTRAINT `pictures_product_ibfk_1` FOREIGN KEY (`id_images`) REFERENCES `images` (`id`),
-  ADD CONSTRAINT `pictures_product_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`);
+ALTER TABLE `more_categories`
+  ADD CONSTRAINT `more_categories_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`),
+  ADD CONSTRAINT `more_categories_ibfk_2` FOREIGN KEY (`id_categories`) REFERENCES `categories` (`id_categories`);
 
 --
--- Ограничения внешнего ключа таблицы `product`
+-- Ограничения внешнего ключа таблицы `more_img`
 --
-ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`preview`) REFERENCES `images` (`id`);
+ALTER TABLE `more_img`
+  ADD CONSTRAINT `more_img_ibfk_1` FOREIGN KEY (`id_img`) REFERENCES `img` (`id_img`),
+  ADD CONSTRAINT `more_img_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `preview`
+--
+ALTER TABLE `preview`
+  ADD CONSTRAINT `preview_ibfk_1` FOREIGN KEY (`id_images`) REFERENCES `img` (`id_img`),
+  ADD CONSTRAINT `preview_ibfk_2` FOREIGN KEY (`main_img`) REFERENCES `product` (`main_img`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
